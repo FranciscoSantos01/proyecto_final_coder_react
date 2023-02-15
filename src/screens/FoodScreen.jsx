@@ -6,21 +6,21 @@ import FoodCards from '../components/home/FoodCards';
 
 
 
-export const FoodScreen =()=> {
+export const FoodScreen =({navigation})=> {
   return (
     <View style={styles.container}>  
      <View  >
       <Search />
      </View>
       <Categories />
-      <FoodCards />
+      <FoodCards navigation={navigation} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     container: {
-      marginTop: 100,  
+      marginTop: 190,  
       alignItems: 'center',
       justifyContent: 'center',
     },

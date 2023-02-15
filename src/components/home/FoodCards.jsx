@@ -1,29 +1,25 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, FlatList } from 'react-native'
 import React from 'react'
 import Burger from '../../../assets/burger.webp'
-import { Feather } from '@expo/vector-icons';
+import { food } from '../../helpers/data/data'
+import Card from './Card'
 
-export default function FoodCards() {
+
+export default function FoodCards({navigation}) {
   return (
     <View style={styles.container}>
         <View  style={styles.text}>
-          <Text style={styles.texto}>FoodCards</Text>
-          <Text>pages</Text>
+          <Text style={styles.texto}>Restaurants</Text>
+          <Text style={{color: 'orange', fontSize: 17}}>view All</Text>
         </View>
-        <View style={styles.card}>
-            <Image  style={styles.img} source={Burger} />
-            <View style={styles.content} >
-                <Text style={styles.title}>Burger Speed</Text>
-                <View style={styles.description}>
-                    <View style={styles.icon}>
-                    <Feather name="clock" size={13} color="black" />
-                    <Text> 15min</Text>
-                    </View>
-                    <Text>500kcal</Text>
-                </View>
-                <Text style={styles.price}>$50</Text>
-            </View>
-        </View>
+    <View style={styles.list}>
+      <FlatList 
+      data={food}
+      renderItem={({item})=> <Card item={item} navigation={navigation} />}
+      keyExtractor={item=> item.id}
+      showsVerticalScrollIndicator={false}
+      />
+      </View>
     </View>
   )
 }
@@ -39,40 +35,17 @@ const styles = StyleSheet.create({
         width: 320,
         padding: 10
     },
-    card:{
-        width: 300,
-        height: 300,
-        padding: 5,
-        backgroundColor: 'grey',
-        marginTop: 10
-    },
+   
     texto:{
         fontWeight:'bold',
         fontSize: 20
     },
-    img:{
-        width: '100%',
-        height: '65%',
-        
-    },
-    description:{
-        flexDirection: 'row',
-        justifyContent:'space-between',
-        marginTop: 5
-    },
-    price:{
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginTop: 10
-    },
-    title:{
-        fontSize:23,
-        fontWeight: '600'
-    },
-    icon:{
-        flexDirection: 'row',
-        alignItems: 'center'
-        
+    list:{
+        justifyContent: 'center',
+        alignItems:'center',
+        marginBottom: 370,
+        padding: 3
     }
+   
     
 })
