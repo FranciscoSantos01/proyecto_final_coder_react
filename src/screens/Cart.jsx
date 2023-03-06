@@ -3,8 +3,12 @@ import React from 'react'
 import CartClose from '../../assets/cartClose.png' 
 import { useSelector } from 'react-redux';
 import CartItems from '../components/cart/cartItems';
+import LocationSelector from '../components/location/LocationSelector';
 export default function Cart() {
    const{cart}=useSelector(state=> state.food)
+   const onLocation = (Location)=>{
+    console.warn(Location)
+   }
   return (
     <>
     <View style={styles.container}>
@@ -25,7 +29,7 @@ export default function Cart() {
      </View> 
     }
    
-
+    <LocationSelector onLocation={onLocation} />
     </>
   )
 }
