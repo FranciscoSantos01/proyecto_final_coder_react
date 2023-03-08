@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
+import { insertToCarrito } from '../../db';
 export const foodSlice = createSlice({
     name: 'food',
     initialState: {
